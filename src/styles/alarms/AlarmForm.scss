@@ -1,0 +1,222 @@
+@import 'vendor/variables';
+@import 'vendor/ScrollBar';
+@import 'vendor/mixins';
+
+$input-width: 66%;
+$border-radius: 0.3rem;
+$metric-width: 84%;
+$light-gray: #5d5e5c;
+$predicate-header: #101011;
+
+@mixin custom-column-width($width) {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  width: $width;
+}
+
+.wrapper {
+  background: $grey-dark;
+}
+
+.wrapper form{
+  margin:3rem 2.2rem 0;
+}
+
+.container {
+  margin: 0 0 0 -1.8rem;
+}
+/* */
+.container-column {
+  padding: 0 0 0 1.8rem;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.box {
+  min-height: 6.9rem; // by design it is like this
+  background-color: $grey;
+  margin-bottom: 0.5rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  color: #fff;
+}
+
+.value {
+  color: $yellow;
+}
+
+.inner-container {
+  width: 100%;
+  padding: 0 1.2rem 0 2.2rem;
+}
+
+.static-value {
+  padding-left: 1.2rem;
+}
+
+.column-width {
+  @include custom-column-width($input-width);
+}
+
+.alarm-name-message {
+  margin: 1.2rem 0;
+
+  input {
+    @extend .column-width;
+  }
+}
+
+.input {
+  background-color: #000;
+  outline: 0;
+  border-radius: $border-radius;
+  border: 0;
+  color: #fff;
+  padding: .9rem 3.5rem .9rem 1.7rem;
+  font-size: 1.4rem;
+  @include placeholder(#fff);
+}
+
+.checkbox {
+  background-color: #000;
+}
+.alarm-group {
+  height: 3.5rem;
+}
+
+.alarm-type {
+  ul {
+    display: flex;
+  }
+  label {
+    cursor: pointer;
+    line-height: 16px;
+    position: relative;
+    vertical-align: top;
+  }
+
+  li {
+    span {
+      padding-left: 1.1rem;
+      padding-right: 2.5rem;
+    }
+  }
+}
+.publishers {
+  border-left: 1px solid $light-gray;
+}
+
+.metric-fields {
+  @include custom-column-width($metric-width);
+
+  & > *:not(:first-child) {
+    margin-left: 2.2rem;
+  }
+}
+.comparison,
+.constant,
+.metric-time-number,
+.time-unit {
+  width: 15%;
+  height: 3.5rem;
+}
+.operators {
+  width: 11%;
+  height: 3.5rem;
+}
+.metric-check {
+  width: 12.1rem;
+}
+.metric-list {
+  width: 15%;
+  height: 3.5rem;
+}
+
+
+.in-the-last {
+  margin: 0 1.3rem 0 3.4rem;
+}
+
+.predicate {
+  .header {
+    background-color: $predicate-header;
+    height: 5.3rem;
+    padding: 0 1.2rem 0 2.2rem;
+    border-bottom: 1px solid $light-gray;
+
+    label {
+      span {
+        padding-right: 0.8rem;
+      }
+    }
+  }
+
+  strong {
+    @extend .title;
+  }
+
+  // .search-wrapper {
+  //   height: 4.5rem;
+  //   padding: 1.7rem 1.4rem 1.7rem 2.5rem;
+  // }
+
+  ul {
+    height: 40rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @include scroll-bar();
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    padding: 0 1.2rem 0 2.2rem;
+    height: 4.4rem;
+    border-bottom: 1px solid $grey-light;
+
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    input {
+      order: 2;
+    }
+    span {
+      order: 1;
+    }
+  }
+}
+
+.bottom-column {
+  margin-top: 1.2rem;
+}
+
+.right-header {
+  margin: 1.5rem 2.2rem;
+  display: flex;
+  align-items: center;
+}
+.top-btn {
+  margin-left: 1.4rem;
+}
+
+.save-alarm-btn {
+  @extend .top-btn;
+  padding: 1.1rem 3.3rem;
+}
+
+.unregister-btn {
+  @extend .top-btn;
+  padding: 1.1rem 1.9rem;
+}

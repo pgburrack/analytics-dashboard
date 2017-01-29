@@ -1,0 +1,29 @@
+@import '../vendor/variables';
+@import '../vendor/ScrollBar';
+
+.user-list {
+  max-height: 19rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  @include scroll-bar();
+
+  li {
+    height: 5rem;
+    padding: 0 1.2rem 0 2.2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #393939;
+
+    &:hover {
+      a {
+        display: inline-block;
+      }
+    }
+    a {
+      transition: display 0.3s ease;
+      display: none;
+      margin-left: auto;
+    }
+  }
+}

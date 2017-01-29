@@ -1,0 +1,537 @@
+@import 'vendor/_normalize';
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800");
+@font-face {
+  font-family: 'Oswald';
+  src: url("/vendor/Oswald-Regular.ttf") format('truetype');
+}
+@import 'vendor/variables';
+
+:global {
+  @import 'vendor/Tooltip';
+  @import 'vendor/Table.scss';
+
+  html {
+    height: 100%;
+    font-size: 10px;
+    background-color: $grey-dark;
+  }
+  body {
+    color: #565656;
+    background: $grey-dark;
+    font-family:  "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 100%;
+    padding: 0px;
+    margin: 0px;
+    min-height: 100%;
+    position: relative;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a:link,
+  a:visited {
+    text-decoration: none;
+    outline: none;
+  }
+  a:hover,
+  a:active {
+    outline: none;
+    text-decoration: none;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    color: #424856;
+    margin: 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+  ::selection {
+    background: #fff7dd;
+  }
+  ::-moz-selection {
+    background: #fff7dd;
+  }
+
+  @media (min-width: 1200px) {
+      .container {
+          padding: 0px;
+          width: 100%;
+      }
+  }
+  @media (min-width: 992px) {
+      .container {
+          padding: 0px;
+          width: 100%;
+      }
+  }
+  @media (min-width: 768px) {
+      .container {
+          padding: 0px;
+          width: 100%;
+      }
+     .navbar {
+        border-radius: 0px !important;
+     }
+  }
+  body ,#root , #root>div, #root>div>div {
+    min-height: 100%;
+    height: 100%;
+  }
+
+  .clearfix:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
+
+  .overflow-hidden {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .activeWrapper {
+    left: 0 !important;
+  }
+  .sidebar-wrapper{
+    position: fixed;
+    min-height: 100%;
+    width: 29rem;
+    top: 0;
+    left: -29rem;
+    z-index: 1031;
+     -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+  }
+
+  .inside-wrapper.active {
+    width: 29rem;
+    height:100vh;
+    position: relative;
+    background: #202020;
+    border-left: 3px solid #fadc40;
+    left: 0%;
+    box-shadow: 5px 0px 30px -3px rgba(0,0,0,0.7);
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+  }
+  .inside-wrapper {
+    left: -100%;
+    width: 29rem;
+    height:100vh;
+    background: #202020;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    box-shadow: 5px 0px 12px -10px rgba(0,0,0,0.7);
+  }
+
+  #glispaMenu:hover path {
+    fill: #fadc40;
+  }
+  .menu {
+    margin: 0px;
+    padding: 0px;
+  }
+  .RangeDayPicker {
+      visibility: hidden;
+      outline: none;
+      background-color: #fff;
+      position: absolute;
+      left: 0px;
+      background-color: #202020;
+      -webkit-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5);
+      -moz-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5);
+      box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5);
+      -webkit-transition: opacity 2s ease-in-out;
+      -moz-transition: opacity 2s ease-in-out;
+      -o-transition: opacity 2s ease-in-out;
+      -ms-transition: opacity 2s ease-in-out;
+      transition: opacity 2s ease-in-out;
+      opacity: 0;
+  }
+  .RangeDayPicker.open {
+    visibility: visible;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    opacity: 1;
+    left: 5rem;
+    width: 40rem;
+    height: 25rem;
+    z-index: 1030;
+    top: 3.2rem;
+  }
+  .DayPicker {
+    outline: none;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: absolute;
+        padding: 0 0 1rem 0;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+
+  .DayPicker:focus {
+    outline: none;
+  }
+
+  .DayPicker-Month {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    margin: 0 2.5rem 0 2rem;
+    width: 15.5rem;
+    height: 15.5rem;
+  }
+
+    .DayPicker-NavBar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      padding: 0 .5rem;
+    }
+
+    .DayPicker-NavButton {
+      position: absolute;
+      width: 2rem;
+      height: 2rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      cursor: pointer;
+      top:0.5rem;
+    }
+
+      .DayPicker-NavButton--prev {
+        left: 1rem;
+        background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjI2cHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDI2IDUwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy4zLjIgKDEyMDQzKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5wcmV2PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9InByZXYiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzLjM5MzE5MywgMjUuMDAwMDAwKSBzY2FsZSgtMSwgMSkgdHJhbnNsYXRlKC0xMy4zOTMxOTMsIC0yNS4wMDAwMDApIHRyYW5zbGF0ZSgwLjg5MzE5MywgMC4wMDAwMDApIiBmaWxsPSIjNTY1QTVDIj4KICAgICAgICAgICAgPHBhdGggZD0iTTAsNDkuMTIzNzMzMSBMMCw0NS4zNjc0MzQ1IEwyMC4xMzE4NDU5LDI0LjcyMzA2MTIgTDAsNC4yMzEzODMxNCBMMCwwLjQ3NTA4NDQ1OSBMMjUsMjQuNzIzMDYxMiBMMCw0OS4xMjM3MzMxIEwwLDQ5LjEyMzczMzEgWiIgaWQ9InJpZ2h0IiBza2V0Y2g6dHlwZT0iTVNTaGFwZUdyb3VwIj48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K");
+        background-size: contain;
+      }
+
+      .DayPicker-NavButton--next {
+        right: 1rem;
+        background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjI2cHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDI2IDUwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggMy4zLjIgKDEyMDQzKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5uZXh0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+CiAgICAgICAgPGcgaWQ9Im5leHQiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuOTUxNDUxLCAwLjAwMDAwMCkiIGZpbGw9IiM1NjVBNUMiPgogICAgICAgICAgICA8cGF0aCBkPSJNMCw0OS4xMjM3MzMxIEwwLDQ1LjM2NzQzNDUgTDIwLjEzMTg0NTksMjQuNzIzMDYxMiBMMCw0LjIzMTM4MzE0IEwwLDAuNDc1MDg0NDU5IEwyNSwyNC43MjMwNjEyIEwwLDQ5LjEyMzczMzEgTDAsNDkuMTIzNzMzMSBaIiBpZD0icmlnaHQiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=");
+        background-size: contain;
+      }
+
+
+    .DayPicker-Caption {
+      display: table-caption;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      margin-bottom: 0.8rem;
+      color: #fff;
+    }
+
+    .DayPicker-Weekdays {
+      display: table-header-group;
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+
+    .DayPicker-WeekdaysRow {
+      display: table-row;
+    }
+
+    .DayPicker-Weekday {
+      display: table-cell;
+      padding: .2rem;
+      font-size: .875em;
+      text-align: center;
+      color: #fff;
+    }
+    .DayPicker-Weekday abbr {
+      border: none !important;
+    }
+
+    .DayPicker-Body {
+      display: table-row-group;
+    }
+
+    .DayPicker-Week {
+      display: table-row;
+    }
+
+    .DayPicker-Day {
+      display: table-cell;
+      padding: .2rem;
+      border: none;
+      text-align: center;
+      cursor: pointer;
+      vertical-align: middle;
+      font-size: 1.3rem;
+      color: #fff;
+      font-weight: 600;
+      outline: none;
+    }
+    .DayPicker-Day:hover {
+      background-color: #fadb3f;
+      color: #000;
+    }
+    .DayPicker-Day--outside:hover {
+      background-color: #2b2b2b;
+    }
+
+    .DayPicker--interactionDisabled .DayPicker-Day {
+      cursor: default;
+    }
+
+  /* Default modifiers */
+
+  .DayPicker-Day--today {
+    font-weight: 500;
+    background-color: #000;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .DayPicker-Day--disabled {
+    color: #dce0e0;
+    cursor: default;
+    background-color: #eff1f1;
+  }
+
+  .DayPicker-Day--outside {
+    cursor: default;
+    color: #dce0e0;
+  }
+
+  /* Example modifiers */
+
+
+  .DayPicker-Day--sunday {
+    color: #dce0e0;
+    background-color: #f7f8f8;
+  }
+
+  .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+    color: #000;
+    background-color: #fadb3f;
+    outline: none;
+  }
+  .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):focus {
+    outline: none;
+  }
+
+  .headerTitle {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    height: 4rem;
+    color: #fff;
+    background-color: #2b2b2b;
+  }
+  .headerTitle span {
+    display: inline-block;
+    margin-top: 1.1rem;
+  }
+  .headerTitle strong {
+    color: #fff;
+    display: inline-block;
+    margin-left: 0.3rem;
+  }
+  .dateHeader {
+      font-size: 1.3rem;
+      text-align: center;
+      margin-top: 0.3rem;
+      background-color: #2b2b2b;
+      height: 4rem;
+  }
+  .toDateLabel {
+    margin-left: 0.4rem;
+  }
+  .fromDateLabel, .toDateLabel {
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-right: 0.4rem;
+      display: inline-block;
+      margin-top: 1rem;
+      color: #fff;
+  }
+  .applyBtn, .resetBtn {
+      border: 0px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  }
+  .resetBtn {
+    margin-left: 1.3rem!important;
+    background-color: transparent;
+    border: 1px solid #fadb3f;
+    font-size: 1rem;
+    border-radius: 3px;
+    color: #fadb3f;
+  }
+  .applyBtn {
+    color: #000;
+    background-color: #fadb3f;
+    margin-left: 1rem;
+    font-size: 1rem;
+    border-radius: 3px;
+    padding: 0.3rem 0.8rem;
+  }
+
+
+  /* Locales */
+
+  .DayPicker--ar {
+    direction: rtl;
+  }
+
+  .hide {
+    display: none !important;
+  }
+
+  /* toolTip */
+
+// a.tooltips span {
+//   position: absolute;
+//   width:140px;
+//   color: #FFFFFF;
+//   background: #000000;
+//   height: 30px;
+//   line-height: 30px;
+//   text-align: center;
+//   visibility: hidden;
+//   border-radius: 6px;
+// }
+
+  .yellow-btn {
+    border-radius: 2px;
+    outline: 0;
+    border: 0;
+    background-color: $yellow;
+    color: $grey-darker;
+    line-height: 1;
+    font-size: 1.4rem;
+
+    &:hover {
+      background-color: $dark-yellow;
+    }
+  }
+
+  .cancel-button {
+    outline: 0;
+    border: 1px solid $yellow;
+    color: $yellow;
+    border-radius: 0.3rem;
+    background-color: transparent;
+    margin-left: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .container {
+    max-width: 100% !important;
+  }
+
+  /* flex */
+  .flex.always {
+    display: flex;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .justify-space-between {
+    justify-content: space-between;
+  }
+
+  .justify-flex-end {
+    justify-content: flex-end;
+  }
+
+  .justify-content-center {
+    justify-content: center;
+  }
+
+  .align-content-center {
+    align-content: center;
+  }
+
+  .align-items-center {
+    align-items: center;
+  }
+
+  .flex-1 {
+    flex: 1;
+  }
+
+  @media screen and (min-width: 769px) {
+    .flex {
+      display: flex;
+    }
+  }
+
+  .columns {
+    margin-left: -1.2rem;
+    margin-right: -1.2rem;
+    margin-top: -1.2rem;
+
+    &:not(:last-child) {
+      margin-bottom: 1.8rem;
+    }
+  }
+
+  .column {
+    padding: 1.2rem;
+  }
+
+  .direction-column {
+    flex-direction: column;
+  }
+
+  .is-three-quarters {
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    width: 75%;
+  }
+
+  .ellipsis {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+
+}
+
+
